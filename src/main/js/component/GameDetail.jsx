@@ -46,10 +46,10 @@ export default class GameDetail extends React.Component {
         if (!this.props.game) return null;
 
         return (
-            <React.Fragment>
+            <div className="detail-card">
                 <h2>Game Details</h2>
                 <div className="game-detail">
-                    <h1 className="game-title">{this.props.game.entity.title}</h1>
+                    <h2 className="game-title">{this.props.game.entity.title}</h2>
                     <div className="game-info owner">
                         <p>Owner</p>
                         <p>
@@ -72,7 +72,7 @@ export default class GameDetail extends React.Component {
                     </div>
 
                 </div>
-            </React.Fragment>
+            </div>
         )
     }
 }
