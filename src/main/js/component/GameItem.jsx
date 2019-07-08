@@ -12,7 +12,8 @@ export default class GameItem extends React.Component {
         this.handleDelete = this.handleDelete.bind(this);
     }
 
-    handleDelete() {
+    handleDelete(event) {
+        event.stopPropagation();
         this.props.onDelete(this.props.game);
     }
 

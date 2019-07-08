@@ -27,6 +27,7 @@ public class DatabaseLoader implements CommandLineRunner {
     @Override
     @SuppressWarnings("RedundantThrows")
     public void run(String... args) throws Exception {
+
         Person person1 = personRepository.save(new Person("Anthony", "Murillo"));
         Person person2 = personRepository.save(new Person("Debra", "Schaefer"));
         Person person3 = personRepository.save(new Person("Haniya", "Kumar"));

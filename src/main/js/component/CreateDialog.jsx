@@ -26,11 +26,47 @@ export default class CreateDialog extends React.Component {
     }
 
     render() {
-        const inputs = this.props.attributes.map(attribute =>
-            <p key={attribute}>
-                <input type="text" placeholder={attribute} ref={attribute} className="field"/>
-            </p>
-        );
+        const persons = this.props.persons ? this.props.persons.map(person => {
+            return (<option key={person.entity._links.self.href}
+                            value={person.entity._links.self.href}>{person.entity.firstName + " " + person.entity.lastName}</option>);
+        }) : null;
+
+
+        const statuses = this.props.statuses ? this.props.statuses.map(status => {
+            return (<option key={status.entity._links.self.href}
+                            value={status.entity._links.self.href}>{status.entity.name}</option>);
+        }) : null;
+
+
+        const inputs = this.props.attributes.map(attribute => {
+            switch (attribute) {
+                case 'owner':
+                case 'borrower':
+                    return (
+                        <p key={attribute}>
+                            <label>
+                                <select placeholder={attribute} ref={attribute} className="field">
+                                    {persons}
+                                </select>
+                                &nbsp;{attribute}</label>
+                        </p>
+                    );
+                case 'status':
+                    return (
+                        <p key={attribute}>
+                            <select placeholder={attribute} ref={attribute} className="field">
+                                {statuses}
+                            </select>
+                        </p>
+                    );
+                default:
+                    return (
+                        <p key={attribute}>
+                            <input type="text" placeholder={attribute} ref={attribute} className="field"/>
+                        </p>
+                    );
+            }
+        });
 
         return (
             <div>

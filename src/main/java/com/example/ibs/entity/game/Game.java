@@ -3,6 +3,8 @@ package com.example.ibs.entity.game;
 import com.example.ibs.entity.person.Person;
 import com.example.ibs.entity.status.Status;
 import lombok.Data;
+import org.hibernate.validator.constraints.Length;
+import org.springframework.data.rest.core.annotation.Description;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,9 +19,11 @@ public class Game {
     @GeneratedValue
     private Long id;
 
+    @Length(max = 140)
     private String title;
 
     @ManyToOne
+    @Description("OOOOOwner")
     private Person owner;
 
     @ManyToOne

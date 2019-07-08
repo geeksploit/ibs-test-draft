@@ -29,6 +29,25 @@ export default class GameManager extends React.Component {
                 path: gameCollection.entity._links.profile.href,
                 headers: {'Accept': 'application/schema+json'}
             }).then(schema => {
+
+                /**
+                 * Filter unneeded JSON Schema properties, like uri references and
+                 * subtypes ($ref).
+                 */
+
+                Object.keys(schema.entity.properties).forEach(property => {
+                    if (schema.entity.properties[property].hasOwnProperty('format') &&
+                        schema.entity.properties[property].format === 'uri') {
+                        // delete schema.entity.properties[property];
+                        /*switch (property) {
+                            case 'owner':
+                                console.log('owner')
+                        }*/
+                    } else if (schema.entity.properties[property].hasOwnProperty('$ref')) {
+                        // delete schema.entity.properties[property];
+                    }
+                });
+
                 this.schema = schema.entity;
                 return gameCollection;
             });
@@ -46,7 +65,41 @@ export default class GameManager extends React.Component {
                 games: games,
                 attributes: Object.keys(this.schema.properties)
             });
-        })
+        });
+
+        follow(client, ['persons']).then(optionCollection => {
+            return optionCollection.entity._embedded.persons.map(option =>
+                client({
+                    method: 'GET',
+                    path: option._links.self.href
+                })
+            );
+        }).then(optionPromises => {
+            return when.all(optionPromises);
+        }).done(options => {
+            console.log('options');
+            console.log(options);
+            this.setState({
+                persons: options
+            });
+        });
+
+        follow(client, ['statuses']).then(optionCollection => {
+            return optionCollection.entity._embedded.statuses.map(option =>
+                client({
+                    method: 'GET',
+                    path: option._links.self.href
+                })
+            );
+        }).then(optionPromises => {
+            return when.all(optionPromises);
+        }).done(options => {
+            console.log('options');
+            console.log(options);
+            this.setState({
+                statuses: options
+            });
+        });
     }
 
     onCreate(newGame) {
@@ -64,9 +117,16 @@ export default class GameManager extends React.Component {
         });
     }
 
-    onDelete(game) {
-        client({method: 'DELETE', path: game.entity._links.self.href}).done(response => {
-            this.loadFromServer();
+    onDelete(deletedGame) {
+        client({method: 'DELETE', path: deletedGame.entity._links.self.href}).done(response => {
+            this.setState({
+                games: this.state.games.filter(game => game !== deletedGame)
+            });
+            if (this.state.selectedGame === deletedGame) {
+                this.setState({
+                    selectedGame: null
+                })
+            }
         });
     }
 
@@ -83,7 +143,8 @@ export default class GameManager extends React.Component {
     render() {
         return (
             <div>
-                <CreateDialog attributes={this.state.attributes} onCreate={this.onCreate}/>
+                <CreateDialog attributes={this.state.attributes} persons={this.state.persons}
+                              statuses={this.state.statuses} onCreate={this.onCreate}/>
                 <GameList games={this.state.games} onItemClick={this.onItemClick} onDelete={this.onDelete}/>
                 <GameDetail game={this.state.selectedGame}/>
             </div>
