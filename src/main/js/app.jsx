@@ -1,12 +1,12 @@
-const React = require('react');
-const ReactDOM = require('react-dom');
-const client = require('./client');
+import React from 'react';
+import ReactDOM from 'react-dom';
+import GameManager from './component/GameManager.jsx';
 
 class App extends React.Component {
 
     render() {
         return (
-            <span>index</span>
+            <GameManager/>
         )
     }
 }

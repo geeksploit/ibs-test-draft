@@ -1,0 +1,162 @@
+.game-manager {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+}
+
+table {
+    border-collapse: collapse;
+    border-bottom: 3px solid rgba(41, 184, 229, 1);
+    box-shadow: 5px 5px 5px rgba(0,0,0,0.3);
+    color: #606061;
+    font-family: 'Poppins', sans-serif;
+}
+
+td, th {
+    border: 1px solid gainsboro;
+    padding: 0.5rem;
+    text-align: left;
+}
+th {
+    background: rgba(41, 184, 229, 1);
+    color: white;
+    text-align: center;
+}
+
+tr:not(:first-child):hover {
+    background: aliceblue;
+}
+
+/*Classes for creating dialogs*/
+
+.modalDialog {
+    position: fixed;
+    font-family: Arial, Helvetica, sans-serif;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 99999;
+    opacity: 0;
+    -webkit-transition: opacity 400ms ease-in;
+    -moz-transition: opacity 400ms ease-in;
+    transition: opacity 400ms ease-in;
+    pointer-events: none;
+}
+
+.modalDialog:target {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modalDialog > div {
+    width: 400px;
+    position: relative;
+    margin: 10% auto;
+    padding: 5px 20px 13px 20px;
+    border-radius: 10px;
+    background: rgba(41, 184, 229, 1);
+}
+
+.modalDialog > div h2 {
+    color: white;
+    font-family: 'Poppins', sans-serif;
+}
+.close {
+    background: #606061;
+    color: #FFFFFF;
+    line-height: 25px;
+    position: absolute;
+    right: -12px;
+    text-align: center;
+    top: -10px;
+    width: 24px;
+    text-decoration: none;
+    font-weight: bold;
+    -webkit-border-radius: 12px;
+    -moz-border-radius: 12px;
+    border-radius: 12px;
+    -moz-box-shadow: 1px 1px 3px #000;
+    -webkit-box-shadow: 1px 1px 3px #000;
+    box-shadow: 1px 1px 3px #000;
+}
+
+.close:hover {
+    background: #00d9ff;
+}
+
+/* Class for create button */
+
+.create {
+    text-transform: uppercase;
+    background-color: mediumaquamarine;
+    color: azure;
+    padding: 0.7rem;
+    letter-spacing: 2px;
+    border-radius: 5px;
+    font-family: 'Poppins', sans-serif;
+    text-decoration: none;
+}
+
+/* Classes for button that delete a game from list */
+.delete-game {
+    border: 0;
+    border-radius: 5px;
+    color: #606061;
+    background: lavender;
+}
+
+.delete-game:hover {
+    cursor: pointer;
+    color: azure;
+    background: linear-gradient(to bottom, rgba(248,80,50,1) 0%, rgba(246,41,12,1) 20%, rgba(241,111,92,1) 50%, rgba(240,47,23,1) 71%, rgba(231,56,39,1) 100%);
+}
+
+/* Classes for detail card */
+
+.detail-card {
+    display: flex;
+    flex-flow: column wrap;
+    width: 40%;
+}
+
+.game-detail {
+    width: 100%;
+    margin-top: 1rem;
+    background-color: #ececec;
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
+    border-bottom: 3px solid mediumaquamarine;
+}
+
+.game-title {
+    margin: 0;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    padding: 0.3rem;
+    background-color: mediumaquamarine;
+    letter-spacing: 2px;
+}
+
+.game-info {
+    padding: 0 1rem;
+    font-size: 1.3rem;
+    font-family: 'Poppins', sans-serif;
+    border-bottom: 1px solid lightgrey;
+}
+
+.game-info p:first-child {
+    font-weight: 700;
+}
+
+.fa {
+    margin-right: 15px;
+    color: mediumaquamarine;
+}
+
+@media screen and (max-width: 964px){
+    .game-manager {
+        flex-flow: column wrap;
+    }
+}
