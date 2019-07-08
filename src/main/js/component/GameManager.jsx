@@ -29,25 +29,6 @@ export default class GameManager extends React.Component {
                 path: gameCollection.entity._links.profile.href,
                 headers: {'Accept': 'application/schema+json'}
             }).then(schema => {
-
-                /**
-                 * Filter unneeded JSON Schema properties, like uri references and
-                 * subtypes ($ref).
-                 */
-
-                Object.keys(schema.entity.properties).forEach(property => {
-                    if (schema.entity.properties[property].hasOwnProperty('format') &&
-                        schema.entity.properties[property].format === 'uri') {
-                        // delete schema.entity.properties[property];
-                        /*switch (property) {
-                            case 'owner':
-                                console.log('owner')
-                        }*/
-                    } else if (schema.entity.properties[property].hasOwnProperty('$ref')) {
-                        // delete schema.entity.properties[property];
-                    }
-                });
-
                 this.schema = schema.entity;
                 return gameCollection;
             });
@@ -142,11 +123,16 @@ export default class GameManager extends React.Component {
 
     render() {
         return (
-            <div>
-                <CreateDialog attributes={this.state.attributes} persons={this.state.persons}
-                              statuses={this.state.statuses} onCreate={this.onCreate}/>
-                <GameList games={this.state.games} onItemClick={this.onItemClick} onDelete={this.onDelete}/>
+            <div className="game-manager">
+                <div>
+                    <h2>Board Games</h2>
+                    <CreateDialog attributes={this.state.attributes} persons={this.state.persons}
+                                  statuses={this.state.statuses} onCreate={this.onCreate}/>
+                    <br/>
+                    <GameList games={this.state.games} onItemClick={this.onItemClick} onDelete={this.onDelete}/>
+                </div>
                 <GameDetail game={this.state.selectedGame}/>
+
             </div>
         )
     }

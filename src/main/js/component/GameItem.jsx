@@ -55,7 +55,7 @@ export default class GameItem extends React.Component {
                 <td>{this.state.borrower}</td>
                 <td>{this.state.status}</td>
                 <td>
-                    <button onClick={this.handleDelete}>Delete</button>
+                    <button className="delete-game" onClick={this.handleDelete}>Delete</button>
                 </td>
             </tr>
         )

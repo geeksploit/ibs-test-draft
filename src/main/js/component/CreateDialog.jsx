@@ -70,7 +70,7 @@ export default class CreateDialog extends React.Component {
 
         return (
             <div>
-                <a href="#createGame">Create</a>
+                <a href="#createGame" className="create">Create</a>
 
                 <div id="createGame" className="modalDialog">
                     <div>
