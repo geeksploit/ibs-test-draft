@@ -58,8 +58,6 @@ export default class GameManager extends React.Component {
         }).then(optionPromises => {
             return when.all(optionPromises);
         }).done(options => {
-            console.log('options');
-            console.log(options);
             this.setState({
                 persons: options
             });
@@ -75,8 +73,6 @@ export default class GameManager extends React.Component {
         }).then(optionPromises => {
             return when.all(optionPromises);
         }).done(options => {
-            console.log('options');
-            console.log(options);
             this.setState({
                 statuses: options
             });
