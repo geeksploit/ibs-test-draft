@@ -46,14 +46,33 @@ export default class GameDetail extends React.Component {
         if (!this.props.game) return null;
 
         return (
-            <div>
-                <h1>{this.props.game.entity.title}</h1>
-                <ul>
-                    <li>{this.state.owner}</li>
-                    <li>{this.state.borrower}</li>
-                    <li>{this.state.status}</li>
-                </ul>
-            </div>
+            <React.Fragment>
+                <h2>Game Details</h2>
+                <div className="game-detail">
+                    <h1 className="game-title">{this.props.game.entity.title}</h1>
+                    <div className="game-info owner">
+                        <p>Owner</p>
+                        <p>
+                            <i className="fa fa-user"/>
+                            {this.state.owner}</p>
+                    </div>
+
+                    <div className="game-info borrower">
+                        <p>Borrower</p>
+                        <p>
+                            <i className="fa fa-user"/>
+                            {this.state.borrower}</p>
+                    </div>
+
+                    <div className="game-info status">
+                        <p>Status</p>
+                        <p>
+                            <i className="fa fa-info"/>
+                            {this.state.status}</p>
+                    </div>
+
+                </div>
+            </React.Fragment>
         )
     }
 }

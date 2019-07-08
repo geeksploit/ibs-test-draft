@@ -79,6 +79,8 @@ tr:not(:first-child):hover {
     background: #00d9ff;
 }
 
+/* Class for create button */
+
 .create {
     text-transform: uppercase;
     background-color: mediumaquamarine;
@@ -90,6 +92,7 @@ tr:not(:first-child):hover {
     text-decoration: none;
 }
 
+/* Classes for button that delete a game from list */
 .delete-game {
     border: 0;
     border-radius: 5px;
@@ -101,4 +104,41 @@ tr:not(:first-child):hover {
     cursor: pointer;
     color: azure;
     background: linear-gradient(to bottom, rgba(248,80,50,1) 0%, rgba(246,41,12,1) 20%, rgba(241,111,92,1) 50%, rgba(240,47,23,1) 71%, rgba(231,56,39,1) 100%);
+}
+
+/* Classes for detail card */
+
+.game-detail {
+    width: 45%;
+    margin-top: 1rem;
+    height: 40%;
+    background-color: #ececec;
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
+    border-bottom: 3px solid mediumaquamarine;
+}
+
+.game-title {
+    margin: 0;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    padding: 0.3rem;
+    background-color: mediumaquamarine;
+    letter-spacing: 2px;
+}
+
+.game-info {
+    padding: 0 1rem;
+    font-size: 1.3rem;
+    font-family: 'Poppins', sans-serif;
+    border-bottom: 1px solid lightgrey;
+}
+
+.game-info p:first-child {
+    font-weight: 700;
+}
+
+.fa {
+    margin-right: 15px;
+    color: mediumaquamarine;
 }
