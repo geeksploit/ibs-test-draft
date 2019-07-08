@@ -23,23 +23,6 @@ export default class GameManager extends React.Component {
     }
 
     loadFromServer(pageSize) {
-        // follow(client, ['games']).then(gameCollection => {
-        //     return gameCollection.entity._embedded.games.map(game =>
-        //         client({
-        //             method: 'GET',
-        //             path: game._links.self.href
-        //         })
-        //     );
-        // }).then(gamePromises => {
-        //     return when.all(gamePromises);
-        // }).done(games => {
-        //     this.setState({
-        //         games: games
-        //     });
-        // })
-        //
-
-
         follow(client, ['games']).then(gameCollection => {
             return client({
                 method: 'GET',
@@ -64,12 +47,6 @@ export default class GameManager extends React.Component {
                 attributes: Object.keys(this.schema.properties)
             });
         })
-
-        //     .done(gameCollection => {
-        //     this.setState({
-        //         games: gameCollection.entity._embedded.games,
-        //         attributes: Object.keys(this.schema.properties)});
-        // });
     }
 
     onCreate(newGame) {
