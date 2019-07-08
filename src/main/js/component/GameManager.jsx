@@ -83,7 +83,9 @@ export default class GameManager extends React.Component {
     render() {
         return (
             <div>
+                <h1>Board Games</h1>
                 <CreateDialog attributes={this.state.attributes} onCreate={this.onCreate}/>
+                <br />
                 <GameList games={this.state.games} onItemClick={this.onItemClick} onDelete={this.onDelete}/>
                 <GameDetail game={this.state.selectedGame}/>
             </div>

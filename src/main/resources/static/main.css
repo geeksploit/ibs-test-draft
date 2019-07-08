@@ -1,15 +1,24 @@
 table {
     border-collapse: collapse;
+    border-bottom: 3px solid rgba(41, 184, 229, 1);
+    box-shadow: 5px 5px 5px rgba(0,0,0,0.3);
+    color: #606061;
+    font-family: 'Poppins', sans-serif;
 }
 
 td, th {
-    border: 1px solid lightsteelblue;
+    border: 1px solid gainsboro;
     padding: 0.5rem;
     text-align: left;
 }
+th {
+    background: rgba(41, 184, 229, 1);
+    color: white;
+    text-align: center;
+}
 
 tr:not(:first-child):hover {
-    background: lavender;
+    background: aliceblue;
 }
 
 /*Classes for creating dialogs*/
@@ -68,4 +77,28 @@ tr:not(:first-child):hover {
 
 .close:hover {
     background: #00d9ff;
+}
+
+.create {
+    text-transform: uppercase;
+    background-color: mediumaquamarine;
+    color: azure;
+    padding: 0.7rem;
+    letter-spacing: 2px;
+    border-radius: 5px;
+    font-family: 'Poppins', sans-serif;
+    text-decoration: none;
+}
+
+.delete-game {
+    border: 0;
+    border-radius: 5px;
+    color: #606061;
+    background: lavender;
+}
+
+.delete-game:hover {
+    cursor: pointer;
+    color: azure;
+    background: linear-gradient(to bottom, rgba(248,80,50,1) 0%, rgba(246,41,12,1) 20%, rgba(241,111,92,1) 50%, rgba(240,47,23,1) 71%, rgba(231,56,39,1) 100%);
 }
